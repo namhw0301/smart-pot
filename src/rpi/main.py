@@ -5,7 +5,7 @@ from pushbullet import Pushbullet
 from playsound import playsound
 
 # Pushbullet API 키 입력
-pb = Pushbullet("o.1iA5k9LnOz6jyaneakU86VEnwHoWOHB9")  # 여기에 너의 키 입력
+pb = Pushbullet("o.1iA5k9LnOz6jyaneakU86VEnwHoWOHB9")  # 여기에 키 입력
 tts_file = "/tmp/tts.mp3"
 
 # UART1 사용 시: /dev/ttyAMA1
