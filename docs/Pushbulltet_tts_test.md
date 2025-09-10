@@ -3,52 +3,8 @@
 Pushbullet API를 활용하여 물을 주면 보호자에게 메시지를 전송하도록 설계
 메시지로 노인의 표정, 물 주기 여부를 전송
 
-## )
+## 테스트 실행 결과
 
-```python
-
-import serial
-from pushbullet import Pushbullet
-import os
-# -*- coding: utf-8 -*-
-from gtts import gTTS
-from playsound import playsound
-# Pushbullet API Key
-pb = Pushbullet("o.1iA5k9LnOz6jyaneakU86VEnwHoWOHB9") # 내 API key
-
-# 시리얼 포트 설정
-ser = serial.Serial('/dev/ttyAMA1', 115200, timeout=1)
-
-print("UART 수신 대기 중...")
-
-while True:
-    if ser.in_waiting:
-        line = ser.readline().decode('utf-8').strip()
-        print(f"수신된 데이터: {line}")
-
-        if line == "1":
-            message = "물이 감지되었습니다!"
-            pb.push_note("스마트 화분 알림", message)
-            # tts 설정(스피커 오면 테스트)
-            
-            tts = gTTS(text="물이 감지되었습니다", lang='ko')
-            tts.save("hello_kor.mp3")
-            os.system("mpg321 hello_kor.mp3")  # mp3 재생
-            
-```
-
-- 실행 결과(tts 제외)
-    
-    ![image.png](attachment:881e7068-a7d2-4fb0-8068-a5c720a1bdf0:image.png)
-    
-    ![pushbullet 화면.jpg](attachment:8ff1ce45-d3cb-44aa-98c6-567d0ef38b9c:pushbullet_화면.jpg)
-    
-    [pushbullet 작동.mp4](attachment:d0b2a8f1-f0d0-4d69-bc37-fcff5f21cc2c:pushbullet_작동.mp4)
-
-  - 실행 결과(tts 추가, esp32 연결 제거)
-    
-    코드( 단순 tts+pushbullet 테스트)
-    
     ```python
     # -*- coding: utf-8 -*-
     import os
@@ -78,11 +34,23 @@ while True:
             print("음성 출력 완료!\n")
     
     ```
+
+- 실행 결과
+    <img width="2879" height="1694" alt="image" src="https://github.com/user-attachments/assets/26ed4f3a-abcf-489a-b6ec-6e27b0b3f6cc" />
+
     
-    [KakaoTalk_20250531_170229079.mp4](attachment:bbffd569-8d5c-42b9-832b-258712b441b8:KakaoTalk_20250531_170229079.mp4)
+<img width="648" height="1348" alt="image" src="https://github.com/user-attachments/assets/22aac902-9dbb-4a39-bc84-42c37567d7a4" />
     
 
-### 기존의 Pushbullet API 코드 문제점
+https://github.com/user-attachments/assets/5c63b8c7-5696-4c87-a3f7-69c651dd26ae
+
+
+    
+
+
+    
+
+## 기존의 Pushbullet API 코드 문제점
 
 사전 구현 단계에서 보호자의 Pushbullet API Key를 미리 알아야 함+Pushbullet API Key가 수정될 시 새로 설정해야 함
 
