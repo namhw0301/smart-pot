@@ -55,14 +55,11 @@ https://github.com/user-attachments/assets/5c63b8c7-5696-4c87-a3f7-69c651dd26ae
 사전 구현 단계에서 보호자의 Pushbullet API Key를 미리 알아야 함+Pushbullet API Key가 수정될 시 새로 설정해야 함
 
 해결책
-
 - Flask 웹서버를 열어서 보호자의 Pushbullet API Key를 입력받도록 한다.
     - Flask: 라즈베리파이에서 실행되는 웹서버. 웹 브라우저(예: 보호자 스마트폰)에서 접속한 사용자가 HTML 페이지를 보고 API Key 같은 데이터를 입력할 수 있게 만들어주는 도구
 <img width="659" height="228" alt="image" src="https://github.com/user-attachments/assets/97bb1547-55e2-4251-96ee-a0707060750a" />
-- 코드(Flask 서버 코드)
-    
-- 
 
+- 코드(Flask 서버 코드)
 ```python
 from flask import Flask, request, render_template
 import json
@@ -116,9 +113,7 @@ if __name__ == "__main__":
     </form>
   </body>
 </html>
-```
-
--    
+``` 
     - 실행 결과
     <img width="2876" height="622" alt="image" src="https://github.com/user-attachments/assets/261ec2bf-40fb-48bd-a123-c4fae1122f58" />
     <img width="2869" height="852" alt="image" src="https://github.com/user-attachments/assets/de53f917-d042-41da-83ce-725a81d5b953" />
